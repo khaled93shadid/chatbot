@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>chatbot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/chatbot.css" />
 </head>
 <body>
-  <div class="js-container">  </div>
+  <div class="js-container ">  </div>
 
 
   <script src="https://unpkg.com/supersimpledev/react.js"></script>
@@ -29,10 +33,10 @@
            setInputText('')
         }
             return(
-                <>
-                  <input onChange={saveInputText} placeholder="Send a message to chatbot" size="30" value={inputText}/>
-                  <button onClick={sendMessage}> send</button>
-              </>
+                <div className="input_flex">
+                  <input className='input_chatbot' onChange={saveInputText} placeholder="Send a message to chatbot" size="30" value={inputText}/>
+                  <button className='button_chatbot' onClick={sendMessage}> send</button>
+              </div>
 
             ) }//chat input end
       function ChatMessage({message,sender}){
@@ -54,47 +58,51 @@
                 */
             return(
                 <div>
-                   {sender==='robot'&&<img src="https://supersimple.dev/projects/chatbot/robot.png" width="50" /> }
-                 {message}
-                  {sender==='user'&&  <img src="https://supersimple.dev/projects/chatbot/user.png" width="50" />}
+                   {sender==='robot'&&<div><img src="https://supersimple.dev/projects/chatbot/robot.png" width="50" /> 
+                    <p className="message_p"> {message}</p>
+                    </div>}
+                   
+                 
+                  {sender==='user'&& <div className="div_user"> 
+                     
+                      <p className="message_p"> {message}</p>
+                       <img className='user_img' src="https://supersimple.dev/projects/chatbot/user.png" width="50" /> 
+                    </div>}
               </div>
 
             )}   
             
        function ChatMessages({chatMessages,setChatMessages}){
-        
-        
+         const chatMessagesRef = React.useRef(null)
+         React.useEffect(()=>{
+             const containerElem=chatMessagesRef.current
+             if(containerElem){containerElem.scrollTop=containerElem.scrollHeight }   
+         },[chatMessages])
        
 
         return(
-          <>
+          <div className="chatMessages"   ref={chatMessagesRef}>
           
-                {chatMessages.map((chatMessage)=>{
+                {chatMessages? chatMessages.map((chatMessage)=>{
               return( <ChatMessage message={chatMessage.message} sender={chatMessage.sender} key={chatMessage.id} /> )
-           })}
-          </>
+           }):<p className="welcome_msg">Welcome to the chatbot project! Send a message using the textbox above.</p> }
+          </div>
         )
        }  //chatMessages end   
 
 
       function App(){
-       const [chatMessages,setChatMessages] =React.useState([
-          {message:'hello chatbot',sender:'user',id:'id0'},
-          {message:'Hello! How can I help you?',sender:'robot',id:'id1'},
-          {message:'can you get me todays date',sender:'user',id:'id2'},
-          {message:'today is september 27',sender:'robot',id:'id3'},
-          {message:'how about flip a coin',sender:'user',id:'id4'},
-          {message:'sure you got tails',sender:'robot',id:'id15'},
-
-        ])
+       const [chatMessages,setChatMessages] =React.useState([])
  
         return(
-          <>
-           <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages} />
-           <ChatMessages chatMessages={chatMessages} setChatMessages={setChatMessages} />
-           
          
-          </>  
+          <div className="bodyDiv_chatbot">
+          
+           <ChatMessages  chatMessages={chatMessages} setChatMessages={setChatMessages} />
+            <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages} />
+           </div>
+         
+          
         )
       } 
             
