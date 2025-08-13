@@ -1,0 +1,9 @@
+.input_chatbot{font-family: Roboto;background-color: white;
+height: 38px;border-radius: 10px;flex-grow: 1;margin-bottom: 50px;
+
+
+}
+.button_chatbot{margin-left: 10px;
+width: 70px;height: 40px;border-radius: 10px;
+border: none;cursor: pointer;background-color: rgb(25, 135, 84);
+color: white;font-family: Roboto;font-size: 16px;}
