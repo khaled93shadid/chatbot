@@ -19,7 +19,7 @@ import './App.css'
  
         return(
          
-          <div className="bodyDiv_chatbot">
+          <div className="bodyDiv_chatbot bg-light">
           
            <ChatMessages  chatMessages={chatMessages} setChatMessages={setChatMessages} />
             <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages} />

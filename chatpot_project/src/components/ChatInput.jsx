@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Chatbot } from "supersimpledev";
 import './ChatInput.css'
+import "bootstrap/dist/css/bootstrap.css"
 
 export function ChatInput({chatMessages,setChatMessages}){
         const [inputText,setInputText]=useState('');
@@ -17,8 +18,8 @@ export function ChatInput({chatMessages,setChatMessages}){
         }
             return(
                 <div className="input_flex">
-                  <input className='input_chatbot' onChange={saveInputText} placeholder="Send a message to chatbot" size="30" value={inputText}/>
-                  <button className='button_chatbot' onClick={sendMessage}> send</button>
+                  <input className='form-control shadow-lg w-75' onChange={saveInputText} placeholder="Send a message to chatbot"  value={inputText}/>
+                  <button className='btn btn-outline-success btn-lg ' onClick={sendMessage}> send</button>
               </div>
 
             ) }//chat input end

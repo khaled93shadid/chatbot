@@ -1,6 +1,8 @@
 
+.bodyDiv_chatbot{padding-left: 10px;padding-right: 10px;height:100vh ;display: flex;flex-direction: column;}
 
-.bodyDiv_chatbot{padding-left: 400px;padding-right: 350px;max-width: 600px;height:100vh ;display: flex;flex-direction: column;}
+
+
 .chatMessages{flex-grow: 1;margin-top: 20px;overflow: scroll;scrollbar-width: none;}
 .welcome_msg{color: black;font-size: 20px;}
 .user_img{width:45px ;height: 45px;margin-left: 10px;}
@@ -10,4 +12,4 @@ max-width: 300px;
 
 }
 .div_user{display: flex;justify-content: right;padding-right:0px;margin-top: 20px;margin-bottom: -15px;}
-.input_flex{display: flex;}
+.input_flex{display: flex;justify-content: center;}
