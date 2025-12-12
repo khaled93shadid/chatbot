@@ -18,7 +18,7 @@ export function ChatInput({chatMessages,setChatMessages}){
         }
             return(
                 <div className="input_flex">
-                  <input className='form-control shadow-lg w-75' onChange={saveInputText} placeholder="Send a message to chatbot"  value={inputText}/>
+                  <input className='form-control fw-bold border-2 hover shadow-lg w-75' onChange={saveInputText} placeholder="Send a message to chatbot"  value={inputText}/>
                   <button className='btn btn-outline-success btn-lg ' onClick={sendMessage}> send</button>
               </div>
 
